@@ -12,3 +12,18 @@ def bubble_sort(arr)
     print arr
 end
 
+
+def bubble_sort_by(array)
+    loop do
+        swapped = false
+        (array.length-1).times do |j|
+            my_method = yield(array[j], array[j+1])
+            if my_method.positive?
+                array[j], array[j+1] = array[j+1], array[j]
+                swapped = true
+            end
+        end
+        break if swapped == false
+    end
+    array
+end
